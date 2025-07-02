@@ -115,7 +115,7 @@ function App() {
                       >
                         Org ID: {item.org_id}
                       </Box>
-                      {Object.keys(item).length === 2 && (
+                      {Object.keys(item?.form_data).length === 0 && (
                         <Box
                           mb={2}
                           p={1}
@@ -130,23 +130,26 @@ function App() {
                           Form submitted successfully
                         </Box>
                       )}
-                      {Object.entries(item).map(([key, value]) =>
-                        key !== "timestamp" && key !== "org_id" ? (
-                          <Box key={key} display="flex" gap={1} mb={1}>
-                            <Typography
-                              variant="body2"
-                              fontWeight={600}
-                              color="text.secondary"
-                              sx={{ minWidth: "120px" }}
-                            >
-                              {formatKey(key)}:
-                            </Typography>
-                            <Typography variant="body2" color="text.primary">
-                              {String(value)}
-                            </Typography>
-                          </Box>
-                        ) : null
-                      )}
+                      {Object.keys(item?.form_data).length !== 0 &&
+                        Object.entries(item?.form_data).map(([key, value]) =>
+                          key !== "timestamp" &&
+                          key !== "org_id" &&
+                          key !== "id" ? (
+                            <Box key={key} display="flex" gap={1} mb={1}>
+                              <Typography
+                                variant="body2"
+                                fontWeight={600}
+                                color="text.secondary"
+                                sx={{ minWidth: "120px" }}
+                              >
+                                {formatKey(key)}:
+                              </Typography>
+                              <Typography variant="body2" color="text.primary">
+                                {String(value)}
+                              </Typography>
+                            </Box>
+                          ) : null
+                        )}
                     </CardContent>
                     <Divider />
                     <Box px={2} py={1} textAlign="right" bgcolor="#f9f9f9">

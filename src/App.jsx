@@ -152,7 +152,13 @@ function App() {
                         )}
                     </CardContent>
                     <Divider />
-                    <Box px={2} py={1} textAlign="right" bgcolor="#f9f9f9">
+                    <Box px={2} py={1} textAlign="left" bgcolor="#f9f9f9">
+                      <Typography variant="caption" color="text.secondary">
+                        Google Click ID: {item?.gclid ? item?.gclid : "-"}
+                      </Typography>
+                    </Box>
+                    <Divider />
+                    <Box px={2} py={1} textAlign="left" bgcolor="#f9f9f9">
                       <Typography variant="caption" color="text.secondary">
                         Submitted {moment(item.timestamp).fromNow()}
                       </Typography>
